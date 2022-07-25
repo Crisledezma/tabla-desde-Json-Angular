@@ -16,7 +16,7 @@ export class AppComponent {
   constructor(
     private heroeService: HeroeService
   ){ 
-    this.heroeService.getHeroes().subscribe((resp:any) => {
+    this.heroeService.getHeroes().subscribe((resp: any) => {
       console.log(resp);
       this.heroes = resp;
     })

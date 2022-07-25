@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
+import { Hero } from '../interface/heroe';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroeService {
 
-  url = 'http://localhost:3000/heroes';
+  url: string = 'http://localhost:3000/heroes';
 
-  constructor(
-    private http:HttpClient
-  ) { }
+  constructor( private http:HttpClient ) { }
 
-  getHeroes() {
-    let header = new HttpHeaders()
-    .set('Type-content', 'aplication/json')
-    return this.http.get(this.url, {
-      headers: header
-    });
+  getHeroes(){
+
+    return this.http.get<Hero[]>(this.url);
   }
 }
