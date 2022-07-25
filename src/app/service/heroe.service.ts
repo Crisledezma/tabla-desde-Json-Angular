@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Hero } from '../interface/heroe';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +12,6 @@ export class HeroeService {
 
   getHeroes(){
 
-    return this.http.get<Hero[]>(this.url);
+    return this.http.get(this.url);
   }
 }

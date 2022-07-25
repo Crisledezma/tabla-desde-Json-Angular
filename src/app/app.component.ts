@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HeroeService } from './service/heroe.service';
 import { Hero } from './interface/heroe';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -16,14 +17,15 @@ export class AppComponent {
   constructor(
     private heroeService: HeroeService
   ){ 
-    this.heroeService.getHeroes().subscribe((resp: any) => {
-      console.log(resp);
-      this.heroes = resp;
-    })
+    this.heroeService.getHeroes()
+      .subscribe((resp: any) => {
+        console.log(resp);
+        this.heroes = resp;
+      })
 
   }
 
-  cardVisible: any = null;
+  cardVisible: number | null = null;
 
   volver() {
     this.cardVisible = null;
